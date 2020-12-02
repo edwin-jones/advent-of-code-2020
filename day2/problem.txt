@@ -1,0 +1,9 @@
+Check input and count how many lines are valid with the following rules.
+
+lines are in 'x-y c: string' format where x is the min occurance count of char c in said string and y is the max.
+x and y may be 0 or greater than 9.
+
+THEN
+
+lines are in 'x-y c: string' format where x is the first occurance count of char c in said string and y is the last.
+C may only occur once in these two positions. Indices start from 1, not 0.

@@ -1,0 +1,5 @@
+Find the two values in input that add up to 2020 and sum them.
+
+THEN
+
+Find the three values in input that add up to 2020 and sum them.
