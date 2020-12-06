@@ -3,8 +3,8 @@ import helpers
 helpers.set_directory()
 lines = helpers.get_input_as_lines()
 
-def get_result():
-    result = 0
+def get_results():
+    results = []
 
     for line in lines:
         col_max = 128
@@ -40,12 +40,17 @@ def get_result():
 
     
         current_value = int(col * 8 + row)
-        print(current_value)
-
-        if current_value > result:
-            result = current_value
+        results.append(current_value)
     
-    return result
+    return results
 
-result = get_result()
-print("Result is: " + str(result))
+results = get_results()
+results.sort()
+
+previous = 2**32
+for result in results:
+    if result > previous + 1:
+        print("Result: " + str(result-1))
+    previous = result
+
+
