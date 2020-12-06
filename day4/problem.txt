@@ -1,0 +1,11 @@
+Scan an input file, splitting input by empty lines.
+
+Check input has all required fields and count how many inputs are correct. Fields are:
+
+byr: (Birth Year)
+iyr: (Issue Year)
+eyr: (Expiration Year)
+hgt: (Height)
+hcl: (Hair Color)
+ecl: (Eye Color)
+pid: (Passport ID)
