@@ -1,0 +1,9 @@
+Check input of a grid of characters.
+
+Starting from the top left, move 3 across and 1 down for each line and count the number of '#' characters
+encountered. Clamp to the length of the rows and do not go out of bounds.
+Each row is the same length.
+
+THEN
+
+Do the same, but for multiple iterations with arbitrary x and y offsets the multiply the results together.
