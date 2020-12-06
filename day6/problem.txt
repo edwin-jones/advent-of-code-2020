@@ -3,3 +3,8 @@ Split input by spaces into batches.
 For each batch, what is the number of unique _letters_ in each string?
 
 Sum each of the values into a scalar and return.
+
+THEN
+
+Figure out which values are on their own or duplicated on every other line of that batch and sum those
+values.
