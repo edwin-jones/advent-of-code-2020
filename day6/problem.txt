@@ -1,0 +1,5 @@
+Split input by spaces into batches.
+
+For each batch, what is the number of unique _letters_ in each string?
+
+Sum each of the values into a scalar and return.
