@@ -1,0 +1,11 @@
+split input by lines
+
+Skip all lines that contain "no other bags"
+
+Take all lines that contain target color, store first two words and store in a set.
+
+Iterate over lines again, store all lines that contain anything in set.
+
+Repeat until iteration finds no things to add.
+
+Sum result.
