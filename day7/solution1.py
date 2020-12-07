@@ -13,8 +13,8 @@ def get_result():
             if "no other bags" in line:
                 continue
             
-            pos = line.index(' ')
-            current_color = line[:line.index(' ', pos + 1)]
+            words = line.split(' ')
+            current_color = f"{words[0]} {words[1]}"
             if current_color == target_color:
                 continue
 
