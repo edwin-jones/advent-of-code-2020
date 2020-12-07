@@ -25,11 +25,11 @@ def get_result():
         bag = Bag(current_color)
 
         if "no other bags" not in line:
-            contents = line.split("contain",1)[1].split(',')
+            items = line.split("contain",1)[1].split(',')
 
-            for words in contents:
-                words = words.strip().split(' ')
-                bag.contents[f"{words[1]} {words[2]}"] = int(words[0])
+            for item in items:
+                tokens = item.strip().split(' ')
+                bag.contents[f"{tokens[1]} {tokens[2]}"] = int(tokens[0])
 
         bags[bag.color] = bag
 
