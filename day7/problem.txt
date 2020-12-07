@@ -1,4 +1,4 @@
-split input by lines
+Split input by lines.
 
 Skip all lines that contain "no other bags".
 Take all lines that contain target color, store first two words and store in a set.
@@ -9,5 +9,6 @@ Sum result.
 
 THEN 
 
-find target color and see how many numbers of other colors it contains.
+Find target color and see how many items of other colors it contains.
 Keep looping through colors until you find how many items the target color contains.
+Each color may contain 0-N of any other color.
