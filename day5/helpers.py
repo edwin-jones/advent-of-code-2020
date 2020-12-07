@@ -7,6 +7,7 @@ def set_directory():
 
 def get_input_as_lines():
     lines = []
+    set_directory()
 
     with open('./input.txt','r') as input:
         for line in input:

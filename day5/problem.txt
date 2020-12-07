@@ -5,7 +5,7 @@ Data is in this format: FBFBBFFRLR
 There are 128 possible values for F and B and 8 for L and R.
 
 Use binary space partitioning to divide by 2 and choose the lower of upper segment of the result in series
-to come to a result (via Binary space partitioning / BSP). For instance, the above string resolves to:
+to come to a result. For instance, the above string resolves to:
 
 0-127 (start at 0)
 F 0-63
