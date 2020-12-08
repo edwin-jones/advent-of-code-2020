@@ -1,15 +1,11 @@
 import helpers
-import time
 
 lines = helpers.get_input_as_lines()
 
 def get_result():
 
-
     for idx, val in enumerate(lines):
-        print(f"checking line {idx} with value: '{val}'")
-        start_time = time.time()
-
+        #print(f"checking line {idx} with value: '{val}'")
         modified_lines = lines.copy()
 
         if "nop" in val:
@@ -20,7 +16,6 @@ def get_result():
 
         acc = 0
         pc = 0
-
         ops = 0
 
         # limit cycles to n seconds
@@ -30,12 +25,9 @@ def get_result():
                 return acc
 
             ops = ops + 1
-            elapsed  = time.time() - start_time
-            if ops > 1000:
-                print(f"Ops: {ops}")
+            if ops > len(lines):
                 break
 
-            print(f"pc: {pc}")
             line = modified_lines[pc]
 
             tokens = line.split(' ')
