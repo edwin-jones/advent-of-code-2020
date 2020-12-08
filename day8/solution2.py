@@ -21,12 +21,21 @@ def get_result():
         acc = 0
         pc = 0
 
+        ops = 0
+
         # limit cycles to n seconds
         while True:
+
+            if pc >= len(modified_lines):
+                return acc
+
+            ops = ops + 1
             elapsed  = time.time() - start_time
-            if elapsed > 5:
+            if ops > 1000:
+                print(f"Ops: {ops}")
                 break
 
+            print(f"pc: {pc}")
             line = modified_lines[pc]
 
             tokens = line.split(' ')
@@ -40,9 +49,6 @@ def get_result():
                 acc = acc + int(tokens[1])
 
             pc = pc + 1
-
-            if pc >= len(modified_lines):
-                return acc
 
     raise Exception("no results found")
 
