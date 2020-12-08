@@ -7,15 +7,27 @@ def get_result():
 
 
     for idx, val in enumerate(lines):
+        print(f"checking line {idx} with value: '{val}'")
         start_time = time.time()
+
+        modified_lines = lines.copy()
+
+        if "nop" in val:
+            modified_lines[idx] = modified_lines[idx].replace("nop", "jmp")
+        
+        if "jmp" in val:
+            modified_lines[idx] = modified_lines[idx].replace("jmp", "nop")
 
         acc = 0
         pc = 0
 
-        # limit cycles to ten seconds
-        while time.time() - start_time < 10_000:
-            
-            line = lines[pc]
+        # limit cycles to n seconds
+        while True:
+            elapsed  = time.time() - start_time
+            if elapsed > 5:
+                break
+
+            line = modified_lines[pc]
 
             tokens = line.split(' ')
 
@@ -29,7 +41,7 @@ def get_result():
 
             pc = pc + 1
 
-            if pc >= len(lines):
+            if pc >= len(modified_lines):
                 return acc
 
     raise Exception("no results found")
