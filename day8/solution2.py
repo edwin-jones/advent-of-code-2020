@@ -19,6 +19,7 @@ def get_result():
         previous_lines = []
 
         while pc not in previous_lines:
+
             if pc >= len(modified_lines):
                 return acc
 
@@ -26,15 +27,15 @@ def get_result():
 
             line = modified_lines[pc]
 
-            tokens = line.split(' ')
+            value = line.split(' ')[1]
 
             if "jmp" in line:
-                pc = pc + int(tokens[1])
+                pc = pc + int(value)
                 continue
             
             if "acc" in line:
                 tokens = line.split(' ')
-                acc = acc + int(tokens[1])
+                acc = acc + int(value)
 
             pc = pc + 1
 

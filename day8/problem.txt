@@ -1,6 +1,10 @@
-You have a list of opcodes with three possibe commands, acc, jmp and nop.
+You have a list of opcodes with three possible commands, acc, jmp and nop.
 Add the values as you go along into an accumulator, ignore no operations and apply jumps.
 Keep track of each line you execute and return the value of the accumulator BEFORE any command/line
 is executed a second time.
 
 THEN
+
+Same as above, but attempt to "fix" the program by replacing the value on all non acc lines.
+Turn jmp commands into nop commands vice versa.
+Find the permutation that exits correctly and return the accumulator value in this case.

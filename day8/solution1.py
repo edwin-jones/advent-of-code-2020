@@ -11,16 +11,15 @@ def get_result():
     while pc not in previous_lines:
         
         line = lines[pc]
-        tokens = line.split(' ')
+        value = line.split(' ')[1]
 
         if "jmp" in line:
             previous_lines.append(pc)
-            pc = pc + int(tokens[1])
+            pc = pc + int(value)
             continue
         
         if "acc" in line:
-            tokens = line.split(' ')
-            acc = acc + int(tokens[1])
+            acc = acc + int(value)
 
         previous_lines.append(pc)
         pc = pc + 1
