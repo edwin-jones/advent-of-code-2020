@@ -5,7 +5,7 @@ lines = helpers.get_input_as_lines()
 def get_result():
 
     for idx, val in enumerate(lines):
-        #print(f"checking line {idx} with value: '{val}'")
+
         modified_lines = lines.copy()
 
         if "nop" in val:
@@ -16,17 +16,13 @@ def get_result():
 
         acc = 0
         pc = 0
-        ops = 0
+        previous_ops = []
 
-        # limit cycles to n seconds
-        while True:
-
+        while pc not in previous_ops:
             if pc >= len(modified_lines):
                 return acc
 
-            ops = ops + 1
-            if ops > len(lines):
-                break
+            previous_ops.append(pc)
 
             line = modified_lines[pc]
 
