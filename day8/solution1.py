@@ -8,13 +8,9 @@ def get_result():
 
     previous_lines = []
 
-    while pc < len(lines):
+    while pc not in previous_lines:
         
         line = lines[pc]
-
-        if pc in previous_lines:
-            return acc
-
         tokens = line.split(' ')
 
         if "jmp" in line:

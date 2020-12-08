@@ -16,13 +16,13 @@ def get_result():
 
         acc = 0
         pc = 0
-        previous_ops = []
+        previous_lines = []
 
-        while pc not in previous_ops:
+        while pc not in previous_lines:
             if pc >= len(modified_lines):
                 return acc
 
-            previous_ops.append(pc)
+            previous_lines.append(pc)
 
             line = modified_lines[pc]
 
