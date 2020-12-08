@@ -4,15 +4,15 @@ lines = helpers.get_input_as_lines()
 
 def get_result():
 
-    for idx, val in enumerate(lines):
+    for i, line_to_replace in enumerate(lines):
 
         modified_lines = lines.copy()
 
-        if "nop" in val:
-            modified_lines[idx] = modified_lines[idx].replace("nop", "jmp")
+        if "nop" in line_to_replace:
+            modified_lines[i] = modified_lines[i].replace("nop", "jmp")
         
-        if "jmp" in val:
-            modified_lines[idx] = modified_lines[idx].replace("jmp", "nop")
+        if "jmp" in line_to_replace:
+            modified_lines[i] = modified_lines[i].replace("jmp", "nop")
 
         acc = 0
         pc = 0
