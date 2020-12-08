@@ -1,0 +1,6 @@
+You have a list of opcodes with three possibe commands, acc, jmp and nop.
+Add the values as you go along into an accumulator, ignore no operations and apply jumps.
+Keep track of each line you execute and return the value of the accumulator BEFORE any command/line
+is executed a second time.
+
+THEN
