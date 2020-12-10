@@ -1,0 +1,3 @@
+Take input as list of numbers and sort. Append last + 3 to end of set, append 0 to start.
+Go through set, finding differences between numbers. Count instances of differences of 1.
+Count instances of differences of 3. Multiply these sums and return the result.
