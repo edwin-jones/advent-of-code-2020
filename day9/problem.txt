@@ -1,0 +1,1 @@
+Find the first number in the set that isn't the sum of two numbers in the previous N of the set.
