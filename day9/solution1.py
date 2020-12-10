@@ -24,7 +24,6 @@ def get_result():
             return item
 
         numbers.pop(0)
-        
 
     return 0
 

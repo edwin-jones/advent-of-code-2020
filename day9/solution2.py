@@ -27,8 +27,6 @@ def get_result():
             b = items[-1]
             return a + b
 
-            
-
         numbers.pop(0)
         
 
