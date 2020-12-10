@@ -1,1 +1,7 @@
 Find the first number in the set that isn't the sum of two numbers in the previous N of the set.
+
+THEN
+
+go through the set and find a continuous range with a lenght >1 that add up to X, 
+where x is the result from the first problem.
+add the smallest and largest number from this range and return the result.
