@@ -6,7 +6,6 @@ def get_result():
 
     numbers.sort()
     numbers.append(numbers[-1]+3)
-    numbers.append(0)
 
     last = 0
     one_count = 0
