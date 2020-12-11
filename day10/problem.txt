@@ -2,13 +2,11 @@ Take input as list of numbers and sort. Append last + 3 to end of set, append 0 
 Go through set, finding differences between numbers. Count instances of differences of 1.
 Count instances of differences of 3. Multiply these sums and return the result.
 
-
 THEN
 
 Figure out how many combinations can exist of the input by removing items
 where no difference between remaining items is greater than 3. 
-The start is always 0 and the end is always the last number 
-(which is the last number of input.txt + 3 as in part 1)
+The start is always 0 and the end is always the last number of input.txt + 3.
 
 From the output/debugging of part 1, we can see that the difference between inputs is always 1 or 3.
 We can ignore differences of 3 in the sequence for this caculation as those can't be removed
