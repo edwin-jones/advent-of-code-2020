@@ -1,3 +1,50 @@
 Take input as list of numbers and sort. Append last + 3 to end of set, append 0 to start.
 Go through set, finding differences between numbers. Count instances of differences of 1.
 Count instances of differences of 3. Multiply these sums and return the result.
+
+
+THEN
+
+Figure out how many combinations can exist of the input where no difference between items
+is greater than 3 and the start is always 0 and the end is always the last number 
+(which is the last number of input.txt + 3 as in part 1)
+
+Count how many sequences of differences of 1 appear in the input. Group them by how many 1's are in a sequence.
+An input of 01256 would contain one sequence of two consecutive 1s.T
+The result is 2^(count of sequences of 2)) * (4^count of sequences of 3) * (7^count of sequences of four)
+
+This is because sequences can be broken down like this:
+
+(1,2,5): one sequences of 1s in a row. 
+nothing can be removed, so result is 0
+
+(1,2,3,6): two sequences of 1s in a row. 
+Combinations be (1,2,3,6) or (1,3,6), so result is 2.
+
+(1,2,3,4,7): three sequences of 1s in a row.
+Combinations be (1,2,3,7) or (1,3,4,7)  or (1,2,4,7) or (1,2,3,4,7), so result is 4.
+
+(1,2,3,4,5,8): three sequences of 1s in a row.
+(1,2,3,4,5,8)
+(1,3,4,5,8)
+(1,2,4,5,8)
+(1,2,3,5,8)
+(1,3,5,8)
+(1,2,5,8)
+(1,4,5,8)
+
+so result is 7
+
+There are never 5 1s in a row as the maximum gap in the sorted input is 3.
+We use powers because we are multiplying each set of possible changes through like in this example:
+
+`1235679` - there are two sets of 1s here so the result is:
+
+2^(2) * 4^(0) * 7^0
+
+which becomes 4*1*1, or four permutations. We could write this more literally as
+
+2*2
+
+This is also 4. but by using powers to convert 0s to 1s, we avoid accidentally turning our results to 0
+via multiplying by 0.
