@@ -1,0 +1,18 @@
+Conways game of life with input as grid.
+Ignore '.' chars
+'L' means dead cell.
+'#' means active cell
+Neigbour count that causes death: 4 or more.
+
+Run simulation until cycle stops changing grid.
+Sum the amount of active cells and return result.
+
+THEN
+
+Two rules changes:
+Neigbour count that causes death: 5 or more.
+No longer check for nearsest neigbours, check status of nearsest cell in
+each direction (L or #) and use that for the neigbour count check.
+
+Run simulation until cycle stops changing grid.
+Sum the amount of active cells and return result.
