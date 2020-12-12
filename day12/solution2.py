@@ -20,6 +20,7 @@ class Waypoint(Ship):
     delta = self.position - ship.position
     direction = move[0]
     distance = move[1]
+    turns = int(distance / 90)
 
     x_multiplier = 0
     y_multiplier = 0
@@ -29,14 +30,22 @@ class Waypoint(Ship):
 
     if direction == 'R':
       vec = pygame.math.Vector2(delta.x,delta.y)
-      vec = vec.rotate(-distance)
+      for _ in range(turns):
+        x = vec.x
+        y = vec.y
+        vec.x = y
+        vec.y = -x
       self.position.x = ship.position.x + int(vec.x)
       self.position.y = ship.position.y + int(vec.y)
       return
 
     if direction == 'L':
       vec = pygame.math.Vector2(delta.x,delta.y)
-      vec = vec.rotate(distance)
+      for _ in range(turns):
+        x = vec.x
+        y = vec.y
+        vec.x = -y
+        vec.y = x 
       self.position.x = ship.position.x + int(vec.x)
       self.position.y = ship.position.y + int(vec.y)
       return
