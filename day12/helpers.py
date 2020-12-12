@@ -49,7 +49,7 @@ def get_input_as_batches_of_lines():
 
     return batches
 
-def get_input_as_directions():
+def get_input_as_moves():
     set_directory()
     directions = []
 
