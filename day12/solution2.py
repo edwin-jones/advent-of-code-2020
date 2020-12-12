@@ -2,25 +2,11 @@ import helpers
 from copy import copy
 import pygame
 
-class Position():
-  def __init__(self, x=0, y=0):
-    self.x = x
-    self.y = y
-  def  __add__(self, other):
-
-    x = self.x + other.x
-    y = self.y + other.y
-    return Position(x,y)
-  def  __sub__(self, other):
-    x = self.x - other.x
-    y = self.y - other.y
-    return Position(x,y)
-
 class Ship():
   directions = ['N', 'E', 'S', 'W']
 
   def __init__(self):
-    self.position = Position()
+    self.position = pygame.math.Vector2()
     self.current_direction_index = 1
 
   def __str__(self):
@@ -37,7 +23,6 @@ class Waypoint(Ship):
 
     x_multiplier = 0
     y_multiplier = 0
-    turns = int(distance / 90)
 
     if direction == 'F':
       return
@@ -91,7 +76,7 @@ def get_result():
     else:
       waypoint.apply_move(move, ship)
 
-  result = abs(ship.position.x) + abs(ship.position.y)
+  result = int(abs(ship.position.x) + abs(ship.position.y))
   return result
 
 result = get_result()
