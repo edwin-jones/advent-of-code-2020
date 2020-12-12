@@ -17,13 +17,15 @@ class Position():
 
 
 class Ship():
-  directions = ['N', 'E', 'S', 'W']
 
   def __init__(self):
     self.position = Position()
 
 
 class Waypoint(Ship):
+
+  directions = ['N', 'E', 'S', 'W']
+
   def apply_move(self, move, ship_position):
     offset = self.position - ship_position
     direction = move[0]
