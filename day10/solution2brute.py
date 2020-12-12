@@ -3,6 +3,9 @@ import helpers
 combinations = set()
 
 def get_combinations(combination):
+    thing = str(combination)
+    if thing in combinations:
+        return
     for i, current in enumerate(combination):
         if combination[2]==3:
             test=1
@@ -18,10 +21,7 @@ def get_combinations(combination):
             new_combination.remove(combination[i+1])
             get_combinations(new_combination)
 
-    thing = str(combination)
-    if thing not in combinations:
-        combinations.add(thing)
-        print(len(combinations))
+    combinations.add(thing)
 
 
 
