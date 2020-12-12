@@ -1,18 +1,20 @@
 import helpers
 from copy import copy
+import pygame
 
 class Position():
   def __init__(self, x=0, y=0):
     self.x = x
     self.y = y
   def  __add__(self, other):
-    self.x = self.x + other.x
-    self.y = self.y + other.y
-    return self
+
+    x = self.x + other.x
+    y = self.y + other.y
+    return Position(x,y)
   def  __sub__(self, other):
-    self.x = self.x - other.x
-    self.y = self.y - other.y
-    return self
+    x = self.x - other.x
+    y = self.y - other.y
+    return Position(x,y)
 
 class Ship():
   directions = ['N', 'E', 'S', 'W']
@@ -29,6 +31,7 @@ class Waypoint(Ship):
     return f"Waypoint. Dir: {self.directions[self.current_direction_index]}, x:{self.position.x}, y:{self.position.y}"
 
   def apply_move(self, move, ship):
+    delta = self.position - ship.position
     direction = move[0]
     distance = move[1]
 
@@ -37,22 +40,20 @@ class Waypoint(Ship):
     turns = int(distance / 90)
 
     if direction == 'F':
-      direction = self.directions[self.current_direction_index]
+      return
 
     if direction == 'R':
-      for _ in range(turns):
-        self.current_direction_index = self.current_direction_index + 1
-        if self.current_direction_index > 3:
-          self.current_direction_index = 0
-        direction = self.directions[self.current_direction_index]
+      vec = pygame.math.Vector2(delta.x,delta.y)
+      vec = vec.rotate(-distance)
+      self.position.x = ship.position.x + int(vec.x)
+      self.position.y = ship.position.y + int(vec.y)
       return
-      
+
     if direction == 'L':
-      for _ in range(turns):
-        self.current_direction_index = self.current_direction_index - 1
-        if self.current_direction_index < 0:
-          self.current_direction_index = len(self.directions) -1
-        direction = self.directions[self.current_direction_index]
+      vec = pygame.math.Vector2(delta.x,delta.y)
+      vec = vec.rotate(distance)
+      self.position.x = ship.position.x + int(vec.x)
+      self.position.y = ship.position.y + int(vec.y)
       return
 
     if direction == 'N':
@@ -79,23 +80,16 @@ def get_result():
   waypoint.position.y = 1
 
   for move in moves:
-    print(f"{move}")
     direction = move[0]
     distance = move[1]
     if direction == 'F':
       diff = waypoint.position - ship.position
       for _ in range(distance):
         ship.position = ship.position + diff
-      waypoint.position = waypoint.position + ship.position
-      print(ship)
-      print(waypoint)
+      waypoint.position = ship.position + diff
 
     else:
-      if direction == 'R':
-        pass
       waypoint.apply_move(move, ship)
-      print(waypoint)
-
 
   result = abs(ship.position.x) + abs(ship.position.y)
   return result
