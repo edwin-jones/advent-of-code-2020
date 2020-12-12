@@ -1,11 +1,6 @@
-import helpers
+from helpers import *
 from copy import copy
 
-class Position():
-  def __init__(self, x=0, y=0):
-    self.x = x
-    self.y = y
-  
 
 def apply_moves(start_position, moves):
   final_position = copy(start_position)
@@ -59,8 +54,8 @@ def apply_moves(start_position, moves):
   return final_position
 
 def get_result():
-  moves = helpers.get_input_as_moves()
-  start_position = Position()
+  moves = get_input_as_moves()
+  start_position = Vector()
   final_position = apply_moves(start_position, moves)
   result = abs(final_position.x) + abs(final_position.y)
   return result

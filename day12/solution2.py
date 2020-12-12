@@ -1,29 +1,10 @@
-import helpers
-
-class Position():
-  def __init__(self, x=0, y=0):
-    self.x = x
-    self.y = y
-
-  def  __add__(self, other):
-    x = self.x + other.x
-    y = self.y + other.y
-    return Position(x,y)
-
-  def  __sub__(self, other):
-    x = self.x - other.x
-    y = self.y - other.y
-    return Position(x,y)
-
+from helpers import *
 
 class Ship():
-
   def __init__(self):
-    self.position = Position()
-
+    self.position = Vector()
 
 class Waypoint(Ship):
-
   directions = ['N', 'E', 'S', 'W']
 
   def apply_move(self, move, ship_position):
@@ -75,7 +56,7 @@ class Waypoint(Ship):
     self.position.y = self.position.y + (distance * y_multiplier)
   
 def get_result():
-  moves = helpers.get_input_as_moves()
+  moves = get_input_as_moves()
   ship = Ship()
   waypoint = Waypoint()
   waypoint.position.x = 10
