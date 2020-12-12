@@ -1,23 +1,31 @@
 import helpers
-from copy import copy
-import pygame
+
+class Position():
+  def __init__(self, x=0, y=0):
+    self.x = x
+    self.y = y
+
+  def  __add__(self, other):
+    x = self.x + other.x
+    y = self.y + other.y
+    return Position(x,y)
+
+  def  __sub__(self, other):
+    x = self.x - other.x
+    y = self.y - other.y
+    return Position(x,y)
+
 
 class Ship():
   directions = ['N', 'E', 'S', 'W']
 
   def __init__(self):
-    self.position = pygame.math.Vector2()
-    self.current_direction_index = 1
+    self.position = Position()
 
-  def __str__(self):
-    return f"Ship. Dir: {self.directions[self.current_direction_index]}, x:{self.position.x}, y:{self.position.y}"
 
 class Waypoint(Ship):
-  def __str__(self):
-    return f"Waypoint. Dir: {self.directions[self.current_direction_index]}, x:{self.position.x}, y:{self.position.y}"
-
-  def apply_move(self, move, ship):
-    delta = self.position - ship.position
+  def apply_move(self, move, ship_position):
+    offset = self.position - ship_position
     direction = move[0]
     distance = move[1]
     turns = int(distance / 90)
@@ -29,25 +37,23 @@ class Waypoint(Ship):
       return
 
     if direction == 'R':
-      vec = pygame.math.Vector2(delta.x,delta.y)
       for _ in range(turns):
-        x = vec.x
-        y = vec.y
-        vec.x = y
-        vec.y = -x
-      self.position.x = ship.position.x + int(vec.x)
-      self.position.y = ship.position.y + int(vec.y)
+        x = offset.x
+        y = offset.y
+        offset.x = y
+        offset.y = -x
+      self.position.x = ship_position.x + offset.x
+      self.position.y = ship_position.y + offset.y
       return
 
     if direction == 'L':
-      vec = pygame.math.Vector2(delta.x,delta.y)
       for _ in range(turns):
-        x = vec.x
-        y = vec.y
-        vec.x = -y
-        vec.y = x 
-      self.position.x = ship.position.x + int(vec.x)
-      self.position.y = ship.position.y + int(vec.y)
+        x = offset.x
+        y = offset.y
+        offset.x = -y
+        offset.y = x 
+      self.position.x = ship_position.x + offset.x
+      self.position.y = ship_position.y + offset.y
       return
 
     if direction == 'N':
@@ -83,9 +89,9 @@ def get_result():
       waypoint.position = ship.position + diff
 
     else:
-      waypoint.apply_move(move, ship)
+      waypoint.apply_move(move, ship.position)
 
-  result = int(abs(ship.position.x) + abs(ship.position.y))
+  result = abs(ship.position.x) + abs(ship.position.y)
   return result
 
 result = get_result()
