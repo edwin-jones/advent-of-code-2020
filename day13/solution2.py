@@ -1,22 +1,11 @@
 from helpers import *
 
-def check_prev_bus_time(bus_num, previous_time, gap):
-  result = 0
-  while result < previous_time:
-    result += bus_num
-  if result - gap == previous_time:
-    return True
-  else:
-    return False
-
+# ALL BUS NUMBERS ARE PRIME!
 def get_result():
   buses = get_bus_list()
-
-  buses
   time = int(buses[0])
-  step = time
+  processed_bus_numbers = {int(buses[0])}
 
-  lcms = {time}
   while True:
     time_cache = time
     for bus in buses:
@@ -28,12 +17,11 @@ def get_result():
         if(bus == buses[-1]):
           return time_cache
         time = time +1
-        lcms.add(number)
+        processed_bus_numbers.add(number)
       else:
-        test = 1
-        for num in lcms:
-          test = test * int(num)
-        step = test
+        step = 1
+        for processed_bus_number in processed_bus_numbers:
+          step = step * processed_bus_number
         time = time_cache + step
         break
   return 0
