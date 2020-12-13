@@ -12,7 +12,7 @@ def check_prev_bus_time(bus_num, previous_time, gap):
 def get_result():
   buses = get_bus_list()
 
-  buses.reverse()
+  buses
   time = int(buses[0])
   step = time
 
@@ -20,13 +20,13 @@ def get_result():
     time_cache = time
     for bus in buses:
       if bus == 'x':
-        time = time - 1
+        time = time +1
         continue
       number = int(bus)
       if time % number == 0:
         if(bus == buses[-1]):
-          return time
-        time = time -1
+          return time_cache
+        time = time +1
       else:
         time = time_cache + step
         break
