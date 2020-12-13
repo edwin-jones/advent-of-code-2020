@@ -29,5 +29,9 @@ def get_bus_numbers():
     if number == 'x':
       continue
     result.append(int(number))
-  result.sort()
   return result
+
+def get_bus_list():
+  lines = get_input_as_lines()
+  numbers = lines[1].replace('\n', '').split(',')
+  return numbers
