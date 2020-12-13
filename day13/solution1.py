@@ -13,7 +13,6 @@ def get_result():
         break
 
     diff = accumulator - time
-    print(f"BUS:{number} WAIT:{diff} ACC:{accumulator}")
     results[diff] = number
 
     shortest_wait = 2**32
@@ -22,7 +21,7 @@ def get_result():
         shortest_wait = key
 
     bus = results[shortest_wait]
-    print(f"RESULT: bus = {bus}, shortest wait:{shortest_wait}")
+  print(f"RESULT: bus = {bus}, shortest wait:{shortest_wait}")
   return shortest_wait * bus
 
 result = get_result()
