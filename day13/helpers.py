@@ -23,5 +23,11 @@ def get_departure_time():
 
 def get_bus_numbers():
   lines = get_input_as_lines()
-  numbers = lines[1].replace('\n', '').replace('x','').split(',')
-  return numbers
+  numbers = lines[1].replace('\n', '').split(',')
+  result = []
+  for number in numbers:
+    if number == 'x':
+      continue
+    result.append(int(number))
+  result.sort()
+  return result
