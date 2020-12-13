@@ -16,6 +16,7 @@ def get_result():
   time = int(buses[0])
   step = time
 
+  lcms = {time}
   while True:
     time_cache = time
     for bus in buses:
@@ -27,7 +28,12 @@ def get_result():
         if(bus == buses[-1]):
           return time_cache
         time = time +1
+        lcms.add(number)
       else:
+        test = 1
+        for num in lcms:
+          test = test * int(num)
+        step = test
         time = time_cache + step
         break
   return 0
